@@ -1,19 +1,27 @@
 # memes4crush
-Automatizes small routine steps towards success. 💪👧
+Поставь на крон рутинные шаги к успеху. 💪👧
 
-<img src="point.jpg" width=60% height=60%>
+<img src="memes/1.jpg" width=70% height=70%>
 
 ## About
 
-It sends one picture from ur saved favourites to ur passion or anyone else every day.
+Взаимодейтсвует с Telegram API в качестве юзера и отправляет одно изображение из локальных "сохранялок" объекту вашей страсти или кому-либо ещё с заданной периодичностью.
 
-__P.S.__: Silly pet project just for fun. However, could be used someday.
+<img src="memes/2.jpg" width=50% height=50%>
+
+__P.S.__: Pet-проект забавы ради. Хотя может и пригодится когда-нибудь.
 
 ## Howto
-Change configs in `.env` or `config.py` file, then run `python.exe main.py`.
 
-Note:
-- you'll need __api_id__ and __api_hash__, see [here](https://core.telegram.org/api/obtaining_api_id);
-- you'll need enter a __confirmation code__ first time;
-- __chat_id__ can be replaced by __username__;
-- an image from the pool is __deleted__ after it was sent.
+Задать переменные в `.env` или `config.py` файле, затем запустить `python.exe main.py`.
+
+Примечания:
+- вам понадобятся __api_id__ и __api_hash__, см. подробнее [здесь](https://core.telegram.org/api/obtaining_api_id);
+- необходимо ввести __код подтверждения__ при первом запуске сессии;
+- __chat_id__ может быть изменён на __username__;
+- картинка будет __удалена__ из пула после отправки.
+
+## To-Do
+
+- [] Деплой на сервере / запуск в serverless облаке;
+- [] Возможность делать рассылку нескольким юзерам (опционально: из разных пулов).
