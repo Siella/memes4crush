@@ -1,3 +1,5 @@
-aiofiles==0.8.0
+asyncpg==0.25.0
+databases==0.5.5
+pyTelegramBotAPI==4.4.0
 python-dotenv==0.20.0
 Telethon==1.24.0
