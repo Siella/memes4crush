@@ -1,3 +1,6 @@
+"""
+Bot which sends ur memes to the user.
+"""
 import asyncio
 import logging
 import random as rd
@@ -6,25 +9,26 @@ from datetime import datetime
 
 from telethon import TelegramClient
 
-from config import CAPTIONS, args
-from utils import EmptyMemePoolError, get_meme, parse_time
+from src.config import API_HASH, API_ID, CAPTIONS, CHAT_ID, PASSWORD, PHONE
+from src.utils import (DatabaseConnectionError, EmptyMemePoolError, get_meme,
+                       parse_time)
 
 sys.tracebacklimit = 0
 logging.basicConfig(level=logging.INFO)
 
 
 async def main(every: str = '24hr'):
-    client = TelegramClient('test', args.api_id, args.api_hash)
-    await client.start(args.phone, args.password)
+    client = TelegramClient('sender', API_ID, API_HASH)
+    await client.start(PHONE, PASSWORD)
 
     while True:
         try:
-            meme = await get_meme(args.file_path)
-        except EmptyMemePoolError as err:
+            meme = await get_meme()
+        except (EmptyMemePoolError, DatabaseConnectionError) as err:
             logging.exception("Failed to get a pic: " + str(err))
         else:
             await client.send_file(
-                args.chat_id, meme, caption=rd.choice(CAPTIONS),
+                CHAT_ID, meme, caption=rd.choice(CAPTIONS),
                 silent=datetime.now().time().hour in range(0, 8)
             )
 
